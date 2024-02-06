@@ -10,11 +10,11 @@ namespace RocketseatAuction.API.Filters
         {
             var token = TokenOnRequest(context.HttpContext);
 
-            var repository = new RocktseatAuctionDbContext();
+            var repository = new RocktseatAuctionDbContext(); // criando um contexto para verificação do token do email do user
 
             var email = FromBase64String(token);
 
-            var exists = repository.Users.Any(user => user.Email.Equals(email));
+            var exists = repository.Users.Any(user => user.Email.Equals(email)); // Verificando se existir o email do token
         }
 
         private string TokenOnRequest(HttpContext context)
