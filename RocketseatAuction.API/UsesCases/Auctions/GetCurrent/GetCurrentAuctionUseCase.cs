@@ -1,4 +1,5 @@
 ﻿using RocketseatAuction.API.Entities;
+using RocketseatAuction.API.Repositories;
 
 namespace RocketseatAuction.API.UsesCases.Auctions.GetCurrent
 {
@@ -6,13 +7,9 @@ namespace RocketseatAuction.API.UsesCases.Auctions.GetCurrent
     {
         public Auction Execute()
         {
-            return new Auction
-            {
-                Id = 1,
-                Ends = DateTime.Now,
-                Starts = DateTime.Now,
-                Name = "A",
-            };
+            var repository = new RocktseatAuctionDbContext();
+
+            return repository.Auctions.First();
         }
     }
 }
