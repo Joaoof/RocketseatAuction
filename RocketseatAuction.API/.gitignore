@@ -1,0 +1,35 @@
+# Arquivos binários
+*.exe
+*.dll
+*.pdb
+
+# Diretórios de saída de compilação
+bin/
+obj/
+
+# Arquivos temporários
+*.DS_Store
+Thumbs.db
+
+# Diretórios de cache
+[Oo]ut/
+[Tt]emp/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.user
+*.suo
+*.sln.docstates
+
+# Pacotes NuGet
+*.nupkg
+*.paket/paket.exe
+
+# Arquivos específicos do Windows
+Thumbs.db
+Desktop.ini
+
+# Arquivos de sistema do macOS
+.DS_Store
