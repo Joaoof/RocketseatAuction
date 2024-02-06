@@ -8,7 +8,8 @@ namespace RocketseatAuction.API.Repositories
         public DbSet<Auction> Auctions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=\C:\Users\joaod\Downloads\leilaoDbNLW.db\");
+            var teste = optionsBuilder.UseSqlite("Data Source=C:\\Users\\joaod\\Downloads\\leilaoDbNLW.db");
+            Console.WriteLine(teste);
         }
     }
 }
