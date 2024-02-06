@@ -14,6 +14,11 @@ namespace RocketseatAuction.API.Filters
         {
             var authentication = context.Request.Headers.Authorization.ToString();
 
+            if (string.IsNullOrEmpty(authentication)) // se a string for vazia | nula retorna Exception
+            {
+                throw new Exception("Token is missing");
+            }
+
             return authentication["Bearer ".Length..];
         }
     }
