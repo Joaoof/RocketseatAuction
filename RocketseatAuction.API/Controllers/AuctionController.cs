@@ -13,9 +13,9 @@ namespace RocketseatAuction.API.Controllers
 
             var useCase = new GetCurrentAuctionUseCase();
 
-            useCase.Execute();
+            var result = useCase.Execute();
 
-            return Ok("Seila");
+            return Ok(result);
         }
     }
 }
