@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using RocketseatAuction.API.Repositories;
 
@@ -8,13 +9,25 @@ namespace RocketseatAuction.API.Filters
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var token = TokenOnRequest(context.HttpContext);
+            try
+            {
+                var token = TokenOnRequest(context.HttpContext);
 
-            var repository = new RocktseatAuctionDbContext(); // criando um contexto para verificação do token do email do user
+                var repository = new RocktseatAuctionDbContext(); // criando um contexto para verificação do token do email do user
 
-            var email = FromBase64String(token);
+                var email = FromBase64String(token);
 
-            var exists = repository.Users.Any(user => user.Email.Equals(email)); // Verificando se existir o email do token
+                var exists = repository.Users.Any(user => user.Email.Equals(email)); // Verificando se existir o email do token
+
+                if (exists == false) // o token recebido tem o email n encontrado no db, por isso false
+                {
+                    context.Result = new UnauthorizedObjectResult("E-mail not valid");
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Result = new UnauthorizedObjectResult(ex.Message);
+            }
         }
 
         private string TokenOnRequest(HttpContext context)
