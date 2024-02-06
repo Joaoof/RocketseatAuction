@@ -5,7 +5,7 @@ namespace RocketseatAuction.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OfferController : ControllerBase
+    public class OfferController : RocketseatAuctionBaseController
     {
         [HttpPost]
         public IActionResult CreateOffer()
