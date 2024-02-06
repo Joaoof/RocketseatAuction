@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RocketseatAuction.API.Comunication.Request;
 
 namespace RocketseatAuction.API.Controllers
 {
@@ -8,7 +9,8 @@ namespace RocketseatAuction.API.Controllers
     public class OfferController : RocketseatAuctionBaseController
     {
         [HttpPost]
-        public IActionResult CreateOffer()
+        [Route("{itemId}")]
+        public IActionResult CreateOffer([FromRoute]int itemId, [FromBody] RequestCreateOfferJson request)
         {
             return Created();
         }
