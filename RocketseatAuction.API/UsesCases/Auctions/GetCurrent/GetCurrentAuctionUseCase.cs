@@ -12,7 +12,7 @@ namespace RocketseatAuction.API.UsesCases.Auctions.GetCurrent
 
             var today = DateTime.Now;
 
-            return repository.Auctions.Include(auction => auction.Items).FirstOrDefault(auction => today >= auction.Starts && today <= auction.Ends);
+            return repository.Auctions.Include(auction => auction.Items).FirstOrDefault();
         }
     }
 }

@@ -25,5 +25,11 @@ namespace RocketseatAuction.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost]
+        public IActionResult CreateOffer()
+        {
+            return Created();
+        }
     }
 }
