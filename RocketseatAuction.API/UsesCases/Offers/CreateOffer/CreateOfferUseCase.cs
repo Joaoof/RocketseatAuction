@@ -10,7 +10,7 @@ namespace RocketseatAuction.API.UsesCases.Offers.CreateOffer
         private readonly LoggedUser _loggedUser;
 
         public CreateOfferUseCase(LoggedUser loggedUser) => _loggedUser = loggedUser;
-        public void Execute(int itemId, RequestCreateOfferJson request)
+        public int Execute(int itemId, RequestCreateOfferJson request)
         {
             var repository = new RocktseatAuctionDbContext();
 
@@ -28,6 +28,8 @@ namespace RocketseatAuction.API.UsesCases.Offers.CreateOffer
             repository.Offers.Add(offer);
 
             repository.SaveChanges();
+
+            return offer.Id;
         }
     }
 }
