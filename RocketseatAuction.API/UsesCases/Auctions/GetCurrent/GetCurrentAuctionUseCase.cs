@@ -1,4 +1,5 @@
-﻿using RocketseatAuction.API.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using RocketseatAuction.API.Entities;
 using RocketseatAuction.API.Repositories;
 
 namespace RocketseatAuction.API.UsesCases.Auctions.GetCurrent
@@ -8,8 +9,9 @@ namespace RocketseatAuction.API.UsesCases.Auctions.GetCurrent
         public Auction Execute()
         {
             var repository = new RocktseatAuctionDbContext();
+            Console.WriteLine(repository);
 
-            return repository.Auctions.First();
+            return repository.Auctions.Include(auction => auction.Items).First();
         }
     }
 }
