@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Filters;
+using RocketseatAuction.API.Repositories.DataAccess;
 using RocketseatAuction.API.Repositories.DataAcess;
 using RocketseatAuction.API.Services;
 using RocketseatAuction.API.UsesCases.Auctions.GetCurrent;
@@ -50,6 +51,7 @@ builder.Services.AddScoped<LoggedUser>();
 builder.Services.AddScoped<CreateOfferUseCase>();
 builder.Services.AddScoped<GetCurrentAuctionUseCase>();
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+builder.Services.AddScoped<IOfferRepository, OfferRepository>();
 
 builder.Services.AddHttpContextAccessor();
 
