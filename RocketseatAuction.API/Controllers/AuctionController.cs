@@ -11,11 +11,8 @@ namespace RocketseatAuction.API.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(Auction), StatusCodes.Status200OK)] // Indicar para o swagger o que ele deve retornar!
         [ProducesResponseType(StatusCodes.Status204NoContent)] // Caso o resultado no swagger seja null
-        public IActionResult GetCurrentAuction() 
+        public IActionResult GetCurrentAuction([FromServices] GetCurrentAuctionUseCase useCase) 
         {
-
-            var useCase = new GetCurrentAuctionUseCase();
-
             var result = useCase.Execute();
 
             if (result is null)
