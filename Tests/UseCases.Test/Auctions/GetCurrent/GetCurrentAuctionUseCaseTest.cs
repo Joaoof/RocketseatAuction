@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using RocketseatAuction.API.UsesCases.Auctions.GetCurrent;
+using Xunit;
 
 namespace UseCases.Test.Auctions.GetCurrent
 {
@@ -8,7 +9,9 @@ namespace UseCases.Test.Auctions.GetCurrent
         public void Sucess()
         {
             // ARRANGE 
-            var useCase = new GetCurrentAuctionUseCase();
+            var useCase = new GetCurrentAuctionUseCase(null);
+
+            useCase.Execute();
         }
     }
 }
