@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Filters;
+using RocketseatAuction.API.Repositories;
 using RocketseatAuction.API.Repositories.DataAccess;
 using RocketseatAuction.API.Repositories.DataAcess;
 using RocketseatAuction.API.Services;
@@ -54,6 +56,10 @@ builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 builder.Services.AddScoped<IOfferRepository, OfferRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddDbContext<RocktseatAuctionDbContext>(options =>
+{
+    options.UseSqlite("Data Source=C:\\Users\\joaod\\Downloads\\leilaoDbNLW.db");
+});
 
 builder.Services.AddHttpContextAccessor();
 

@@ -17,8 +17,6 @@ namespace RocketseatAuction.API.Filters
             {
                 var token = TokenOnRequest(context.HttpContext);
 
-                var repository = new RocktseatAuctionDbContext(); // criando um contexto para verificação do token do email do user
-
                 var email = FromBase64String(token);
 
                 var exists = _repository.ExistUserWithEmail(email);
