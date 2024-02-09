@@ -11,7 +11,11 @@ namespace UseCases.Test.Auctions.GetCurrent
             // ARRANGE 
             var useCase = new GetCurrentAuctionUseCase(null);
 
-            useCase.Execute();
+            // ACT
+            var auction = useCase.Execute();
+
+            //ASSERT
+            Assert.NotNull(auction);
         }
     }
 }
